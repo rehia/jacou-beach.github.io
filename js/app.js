@@ -48,8 +48,8 @@ const CONFIG = {
      Les valeurs ci-dessous sont des placeholders.
      phoneEncoded = btoa("06 12 34 56 78")
      emailEncoded = btoa("contact@example.com")         */
-  phoneEncoded: 'MDYgMTIgMzQgNTYgNzg=',
-  emailEncoded: 'Y29udGFjdEBleGFtcGxlLmNvbQ==',
+  phoneEncoded: 'MDYgMjEgMDkgOTAgMTA=',
+  emailEncoded: 'amVyb21lQGF2b3VzdGluLmNvbQ==',
   ownerName: 'Le propriétaire',
 
   /* --- Description longue --- */
