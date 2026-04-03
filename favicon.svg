@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Fond arrondi -->
+  <rect width="32" height="32" rx="6" fill="#1e3a5f"/>
+  <!-- Toit -->
+  <polygon points="16,4 28,15 4,15" fill="#f0a500"/>
+  <!-- Cheminée -->
+  <rect x="20" y="7" width="3" height="6" fill="#f0a500"/>
+  <!-- Murs -->
+  <rect x="6" y="14" width="20" height="13" fill="#ffffff"/>
+  <!-- Porte -->
+  <rect x="13" y="20" width="6" height="7" rx="1" fill="#1e3a5f"/>
+  <!-- Fenêtre gauche -->
+  <rect x="8" y="17" width="4" height="4" rx="0.5" fill="#a8d8f0"/>
+  <!-- Fenêtre droite -->
+  <rect x="20" y="17" width="4" height="4" rx="0.5" fill="#a8d8f0"/>
+</svg>
