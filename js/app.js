@@ -57,27 +57,22 @@ const CONFIG = {
     <p class="mb-4">
       Sur les hauteurs de Jacou, dans le quartier recherché de Bel Air, cette maison
       traversante a de quoi séduire&nbsp;: une vue dégagée sur le Pic Saint Loup depuis
-      la terrasse, le jardin et la piscine. Double orientation, lumière généreuse
-      et un cadre de vie qui donne envie de rester.
+      la terrasse, le jardin et la piscine. Double orientation et lumière généreuse toute la journée : ici, on se sent chez soi.
     </p>
     <p class="mb-4">
-      Au rez-de-chaussée, le salon-séjour traversant de 24&nbsp;m², baigné de lumière,
-      communique avec une cuisine semi-ouverte de 12&nbsp;m², entièrement refaite en 2022.
+      Au rez-de-chaussée, un espace séjour-salon et cuisine semi-ouverte de 36&nbsp;m², traversant et baigné de lumière. La cuisine a été entièrement refaite en 2022.
       Depuis la cuisine, on accède directement à la terrasse et au jardin côté nord.
       WC séparé au rez-de-chaussée.
     </p>
     <p class="mb-4">
       À l'étage, trois chambres de 11 à 12&nbsp;m² — dont deux côté nord avec vue
-      sur le Pic — et une salle d'eau soignée&nbsp;: douche italienne XXL, double vasque,
-      WC indépendant. L'ensemble de la maison a été rénové ces dernières années.
+      sur le Pic — et une salle d'eau soignée&nbsp;: douche italienne XL, double vasque, WC. L'ensemble de la maison a été rénové ces dernières années.
     </p>
     <p>
       Côté extérieurs, la maison se vit des deux côtés. Au nord&nbsp;: terrasse avec
       pergola et barbecue, jardin paysager et piscine semi-enterrée, face au Pic
       Saint Loup. Au sud&nbsp;: cour fermée avec préau et 3 places de parking. En
-      contrebas, un garage de 27&nbsp;m² avec accès indépendant. Jacou, commune dynamique
-      aux portes de la garrigue, offre tous les commerces à 3 minutes à pied, le
-      tramway et les écoles à 5 minutes, et le collège à un quart d'heure de marche.
+      contrebas, un garage de 27&nbsp;m² avec accès indépendant complète ce bien. Située dans Jacou, commune dynamique aux portes de la garrigue, la maison est à 3 minutes à pied des commerces, 5 minutes du tramway et des écoles, et un quart d'heure du collège.
     </p>
   `,
 
@@ -102,7 +97,7 @@ const CONFIG = {
     { icon: '🧭', label: 'Exposition',                  value: 'Double orientation (traversante)' },
     { icon: '🚗', label: 'Garage',                      value: '27 m²' },
     { icon: '🅿️',  label: 'Parking extérieur',         value: '4 places',                highlight: true },
-    { icon: '🚿', label: 'Salle d\'eau',                value: 'Douche italienne, double vasque + WC séparé' },
+    { icon: '🚿', label: 'Salle d\'eau',                value: 'Douche italienne XL, double vasque, WC' },
     { icon: '🔥', label: 'Chauffage',                   value: 'Pompe à chaleur air/air + électrique' },
     { icon: '❄️',  label: 'Climatisation',              value: 'Réversible',              highlight: true },
     { icon: '💧', label: 'Eau chaude',                  value: 'Ballon électrique' },
