@@ -379,6 +379,246 @@
 /* ---- Description expand ---- */
 .desc-collapsed { max-height: 120px; overflow: hidden; }
 
+/* =====================================================
+   RESEARCH PAGE — Carte de suivi des biens
+   ===================================================== */
+
+/* ---- Bouton toggle panneau ---- */
+#panel-toggle {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #1e3a5f;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+#panel-toggle:hover { background: #f1f5f9; }
+
+/* ---- Panneau latéral ---- */
+#side-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 340px;
+  max-width: 92vw;
+  z-index: 999;
+  background: #fff;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-110%);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+#side-panel.open { transform: translateX(0); }
+
+.sp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.sp-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e3a5f;
+  margin: 0;
+}
+
+#panel-close {
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#panel-close:hover { background: #f1f5f9; color: #1e293b; }
+
+.sp-hint {
+  padding: 10px 20px 8px;
+  font-size: 12px;
+  color: #94a3b8;
+  border-bottom: 1px solid #f1f5f9;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+.sp-hint code { font-size: 11px; background: #f1f5f9; padding: 1px 4px; border-radius: 3px; }
+
+.sp-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+.pl-empty {
+  padding: 24px 20px;
+  color: #94a3b8;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Item dans la liste */
+.pl-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #f8fafc;
+  transition: background 0.12s;
+}
+.pl-item:hover { background: #f8fafc; }
+
+.pl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+}
+
+.pl-info { flex: 1; min-width: 0; }
+
+.pl-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pl-addr {
+  font-size: 11px;
+  color: #94a3b8;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pl-status {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.pl-link {
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: color 0.12s, background 0.12s;
+}
+.pl-link:hover { color: #2563eb; background: #eff6ff; }
+
+.sp-footer {
+  padding: 14px 20px;
+  border-top: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+.sp-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.12s;
+}
+.sp-back:hover { color: #1e3a5f; }
+
+/* ---- Popup marqueur ---- */
+.research-popup { padding: 4px 2px; min-width: 180px; }
+
+.rp-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 2px;
+}
+
+.rp-address {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 8px;
+}
+
+.rp-status {
+  display: inline-block;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+}
+
+.rp-link {
+  display: block;
+  font-size: 13px;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 4px;
+}
+.rp-link:hover { text-decoration: underline; }
+
+/* ---- Légende ---- */
+.research-legend {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(6px);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.12);
+  font-size: 12px;
+}
+
+.rl-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.rl-row:last-child { margin-bottom: 0; }
+
+.rl-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+}
+
+.rl-text { color: #374151; font-weight: 500; }
+
 /* ---- Utility ---- */
 .price-main {
   font-size: 2rem;

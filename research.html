@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="robots"    content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
+  <meta name="bingbot"   content="noindex, nofollow">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma"        content="no-cache">
+
+  <title>Recherche de biens — Jacou &amp; alentours</title>
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Tailwind CSS v3 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Leaflet 1.9 -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <!-- Styles personnalisés -->
+  <link rel="stylesheet" href="css/custom.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: '#1e3a5f' },
+          fontFamily: { sans: ['system-ui', 'ui-sans-serif', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body style="margin:0;overflow:hidden;">
+
+  <!-- Carte plein écran -->
+  <div id="research-map" style="position:fixed;inset:0;z-index:0;"></div>
+
+  <!-- Bouton toggle panneau -->
+  <button id="panel-toggle"
+          aria-label="Ouvrir la liste des biens"
+          title="Liste des biens">
+    <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"/>
+    </svg>
+    <span>Biens</span>
+  </button>
+
+  <!-- Panneau latéral -->
+  <aside id="side-panel" role="complementary" aria-label="Liste des biens">
+
+    <!-- En-tête panneau -->
+    <div class="sp-header">
+      <h1 class="sp-title">Recherche immobilière</h1>
+      <button id="panel-close" aria-label="Fermer">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sous-titre / aide -->
+    <p class="sp-hint">
+      Cliquer sur un bien pour centrer la carte.
+      Éditer <code>js/research-data.js</code> pour ajouter des biens.
+    </p>
+
+    <!-- Liste des biens -->
+    <div id="property-list" class="sp-list"></div>
+
+    <!-- Lien retour -->
+    <div class="sp-footer">
+      <a href="index.html" class="sp-back">
+        <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Retour à l'annonce
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/research-data.js"></script>
+  <script src="js/research.js"></script>
+
+</body>
+</html>
