@@ -590,6 +590,40 @@
 }
 .rp-link:hover { text-decoration: underline; }
 
+.rp-photo {
+  display: block;
+  width: 100%;
+  max-height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.rp-links {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.rp-site-link {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+.rp-site-link:hover { text-decoration: underline; }
+
+.rp-sep {
+  color: #94a3b8;
+  user-select: none;
+}
+
+.rp-approx {
+  font-size: 11px;
+  color: #94a3b8;
+  font-style: italic;
+  margin: 0 0 6px;
+}
+
 /* ---- Légende ---- */
 .research-legend {
   background: rgba(255,255,255,0.92);
