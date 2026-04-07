@@ -27,33 +27,69 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 19,
 }).addTo(map);
 
+/* ---- Rétrocompatibilité : normalise urls ---- */
+function getUrls(p) {
+  if (p.urls && p.urls.length) return p.urls;
+  if (p.url) return [{ url: p.url }];
+  return [];
+}
+
+/* ---- Résout le nom d'un site à partir de son URL ---- */
+function resolveSiteName(entry) {
+  if (entry.site) return entry.site;
+  try {
+    const host = new URL(entry.url).hostname.replace(/^www\./, '');
+    return (typeof SITE_NAMES !== 'undefined' && SITE_NAMES[host]) || host;
+  } catch (_) {
+    return entry.url;
+  }
+}
+
 /* ---- Marqueurs ---- */
 function buildPopup(p) {
   const cfg = STATUS_CONFIG[p.status] || STATUS_CONFIG['to-visit'];
+  const urls = getUrls(p);
+  const photo = p.image ? `<a href="${p.image}" target="_blank" rel="noopener noreferrer"><img class="rp-photo" src="${p.image}" alt="Photo du bien"></a>` : '';
+  const links = urls.length
+    ? `<div class="rp-links">${urls.map(e => `<a class="rp-site-link" href="${e.url}" target="_blank" rel="noopener noreferrer">${resolveSiteName(e)}</a>`).join('<span class="rp-sep"> · </span>')}</div>`
+    : '';
+  const approxNote = p.approximate ? `<p class="rp-approx">📍 Localisation approximative</p>` : '';
   return `
     <div class="research-popup">
+      ${photo}
       <p class="rp-label">${p.label || p.address}</p>
       <p class="rp-address">${p.label ? p.address : ''}</p>
+      ${approxNote}
       <span class="rp-status" style="background:${cfg.color}">${cfg.label}</span>
-      <a class="rp-link" href="${p.url}" target="_blank" rel="noopener noreferrer">
-        Voir l'annonce →
-      </a>
+      ${links}
     </div>`;
 }
+
+const approxIcon = L.icon({
+  iconUrl: 'img/marker-approx.svg',
+  shadowUrl: 'img/marker-approx-shadow.svg',
+  iconSize: [30, 40],
+  shadowSize: [40, 20],
+  iconAnchor: [15, 40],
+  shadowAnchor: [12, 20],
+  popupAnchor: [0, -36],
+});
 
 (PROPERTIES || []).forEach(p => {
   const cfg = STATUS_CONFIG[p.status] || STATUS_CONFIG['to-visit'];
 
-  L.circleMarker([p.lat, p.lng], {
-    radius: 10,
-    fillColor: cfg.color,
-    color: '#fff',
-    weight: 2,
-    opacity: 1,
-    fillOpacity: 0.85,
-  })
-    .addTo(map)
-    .bindPopup(buildPopup(p), { maxWidth: 260 });
+  const marker = p.approximate
+    ? L.marker([p.lat, p.lng], { icon: approxIcon })
+    : L.circleMarker([p.lat, p.lng], {
+        radius: 10,
+        fillColor: cfg.color,
+        color: '#fff',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.85,
+      });
+
+  marker.addTo(map).bindPopup(buildPopup(p), { maxWidth: 260 });
 });
 
 /* ---- Légende ---- */
@@ -92,7 +128,7 @@ function renderList() {
           <p class="pl-addr">${p.label ? p.address : ''}</p>
           <span class="pl-status">${cfg.label}</span>
         </div>
-        <a class="pl-link" href="${p.url}" target="_blank" rel="noopener noreferrer" title="Voir l'annonce">
+        <a class="pl-link" href="${(getUrls(p)[0] || {}).url || '#'}" target="_blank" rel="noopener noreferrer" title="Voir l'annonce">
           <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
