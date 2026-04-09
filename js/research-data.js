@@ -75,4 +75,16 @@ const PROPERTIES = [
     image: 'https://img.leboncoin.fr/api/v1/lbcpb1/images/gh/4c/9a/gh4c9ab4e410310a5cb91934858d6ef123ce7052.jpg?rule=ad-large',
     approximate: true,
   },
+  {
+    address: 'Teyran (34820)',
+    lat: 43.685500,
+    lng: 3.924800,
+    urls: [
+      { url: 'https://www.seloger.com/annonces/achat/maison/teyran-34/265869537.htm' },
+    ],
+    status: 'to-visit',
+    label: 'Plain pied 140 m2 - 570000€',
+    image: 'https://mms.seloger.com/8/2/1/2/8212ae35-a9ed-40bb-9963-2d38c45bcb36.jpg?ci_seal=433c28e790b4a60f2f3c530f0836f390c748b46c&w=1920&func=fit&bg_color=000&org_if_sml=1',
+    approximate: true,
+  },
 ];

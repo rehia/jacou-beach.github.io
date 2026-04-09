@@ -120,6 +120,11 @@ const toggleBtn  = document.getElementById('panel-toggle');
 const closeBtn   = document.getElementById('panel-close');
 const listEl     = document.getElementById('property-list');
 
+function extractCity(address) {
+  const m = address && address.match(/([^,]+?)\s*\(\d{5}\)\s*$/);
+  return m ? m[1].trim() : '';
+}
+
 function renderList() {
   if (!PROPERTIES || PROPERTIES.length === 0) {
     listEl.innerHTML = '<p class="pl-empty">Aucun bien enregistré.</p>';
@@ -132,7 +137,7 @@ function renderList() {
         <span class="pl-dot" style="background:${cfg.color}"></span>
         <div class="pl-info">
           <p class="pl-name">${p.label || p.address}</p>
-          <p class="pl-addr">${p.label ? p.address : ''}</p>
+          <p class="pl-addr">${extractCity(p.address)}</p>
           <span class="pl-status">${cfg.label}</span>
         </div>
         <a class="pl-link" href="${(getUrls(p)[0] || {}).url || '#'}" target="_blank" rel="noopener noreferrer" title="Voir l'annonce">
