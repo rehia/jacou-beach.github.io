@@ -64,8 +64,8 @@ const PROPERTIES = [
   },
   {
     address: 'Saint-Drézéry (34160)',
-    lat: 43.7067,
-    lng: 3.9567,
+    lat: 43.733064,
+    lng: 3.977779,
     urls: [
       { url: 'https://www.bienici.com/annonce/vente/teyran/maison/6pieces/ag440414-521039147' },
       { url: 'https://www.leboncoin.fr/ad/ventes_immobilieres/3172136866' },
