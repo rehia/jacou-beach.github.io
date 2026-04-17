@@ -76,6 +76,17 @@ const PROPERTIES = [
     approximate: true,
   },
   {
+    address: '7 Rue Marcel Pagnol, Le Crès (34920)',
+    lat: 43.655345,
+    lng: 3.937712,
+    urls: [
+      { url: 'https://www.seloger.com/annonces/achat/maison/le-cres-34/nord-ouest/266672583.htm' },
+    ],
+    status: 'to-visit',
+    label: '6 pièces 166 m² - 588 000€',
+    image: 'https://mms.seloger.com/6/7/5/d/675dfa93-3996-4366-90cb-a7691dc78ef3.jpg?ci_seal=31de78422e626b71c54fbac37a7a39607b5869cc&w=1024&h=576',
+  },
+  {
     address: '3 Bis Rue de Figaret, Teyran (34820)',
     lat: 43.689945,
     lng: 3.9261488,
