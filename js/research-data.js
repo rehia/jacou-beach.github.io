@@ -88,6 +88,17 @@ const PROPERTIES = [
     approximate: true,
   },
   {
+    address: '2 Rue du Commerce, Le Crès (34920)',
+    lat: 43.6459506,
+    lng: 3.9341524,
+    urls: [
+      { url: 'https://www.leboncoin.fr/ad/ventes_immobilieres/3183109348' },
+    ],
+    status: 'to-visit',
+    label: '6 pièces 160 m² - 595 000€',
+    image: 'https://img.leboncoin.fr/api/v1/lbcpb1/images/12/c9/78/12c978bc511f377f4c46f2931ecf8709de468cc9.jpg?rule=ad-large',
+  },
+  {
     address: '7 Rue Marcel Pagnol, Le Crès (34920)',
     lat: 43.655345,
     lng: 3.937712,
