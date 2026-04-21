@@ -48,6 +48,18 @@ function resolveSiteName(entry) {
   }
 }
 
+/* ---- Filtre actif ---- */
+let activeFilter = 'all';
+
+function isVisible(p) {
+  switch (activeFilter) {
+    case 'to-visit':     return p.status === 'to-visit';
+    case 'visited':      return p.status === 'visited';
+    case 'no-abandoned': return p.status !== 'abandoned';
+    default:             return true;
+  }
+}
+
 /* ---- Marqueurs ---- */
 function buildPopup(p) {
   const cfg = STATUS_CONFIG[p.status] || STATUS_CONFIG['to-visit'];
@@ -81,7 +93,7 @@ function makeApproxIcon(status) {
   });
 }
 
-(PROPERTIES || []).forEach(p => {
+const markers = (PROPERTIES || []).map(p => {
   const cfg = STATUS_CONFIG[p.status] || STATUS_CONFIG['to-visit'];
 
   const marker = p.approximate
@@ -96,6 +108,7 @@ function makeApproxIcon(status) {
       });
 
   marker.addTo(map).bindPopup(buildPopup(p), { maxWidth: 260 });
+  return marker;
 });
 
 /* ---- Légende ---- */
@@ -133,7 +146,16 @@ function renderList() {
     listEl.innerHTML = '<p class="pl-empty">Aucun bien enregistré.</p>';
     return;
   }
-  listEl.innerHTML = PROPERTIES.map((p, i) => {
+  const visible = PROPERTIES
+    .map((p, i) => ({ p, i }))
+    .filter(({ p }) => isVisible(p));
+
+  if (visible.length === 0) {
+    listEl.innerHTML = '<p class="pl-empty">Aucun bien pour ce filtre.</p>';
+    return;
+  }
+
+  listEl.innerHTML = visible.map(({ p, i }) => {
     const cfg = STATUS_CONFIG[p.status] || STATUS_CONFIG['to-visit'];
     return `
       <div class="pl-item" data-idx="${i}">
@@ -162,7 +184,27 @@ function renderList() {
   });
 }
 
+function applyFilter(filter) {
+  activeFilter = filter;
+  (PROPERTIES || []).forEach((p, i) => {
+    if (isVisible(p)) {
+      map.addLayer(markers[i]);
+    } else {
+      map.removeLayer(markers[i]);
+    }
+  });
+  renderList();
+}
+
 toggleBtn.addEventListener('click', () => panel.classList.toggle('open'));
 closeBtn.addEventListener('click',  () => panel.classList.remove('open'));
+
+document.querySelectorAll('.filter-chip').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilter(btn.dataset.filter);
+  });
+});
 
 renderList();
